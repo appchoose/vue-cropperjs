@@ -1,8 +1,6 @@
 import Cropper from 'cropperjs'
 
-const previewPropType = typeof window === 'undefined' ?
-  [String, Array] :
-  [String, Array, Element, NodeList]
+const previewPropType = typeof window === 'undefined' ? [String, Array] : [String, Array, Element, NodeList]
 
 export default {
   render(h) {
@@ -13,6 +11,7 @@ export default {
         ref: 'img',
         attrs: {
           src: this.src,
+          crossOrigin: "Anonymous",
           alt: this.alt || 'image',
           style: 'max-width: 100%'
         },
