@@ -1,12 +1,14 @@
 import Cropper from 'cropperjs'
 
-const previewPropType = typeof window === 'undefined'
-  ? [String, Array]
-  : [String, Array, Element, NodeList]
+const previewPropType = typeof window === 'undefined' ?
+  [String, Array] :
+  [String, Array, Element, NodeList]
 
 export default {
   render(h) {
-    return h('div', { style: this.containerStyle }, [
+    return h('div', {
+      style: this.containerStyle
+    }, [
       h('img', {
         ref: 'img',
         attrs: {
@@ -44,7 +46,7 @@ export default {
     },
     checkCrossOrigin: {
       type: Boolean,
-      default: true
+      default: false
     },
     checkOrientation: {
       type: Boolean,
@@ -130,7 +132,13 @@ export default {
     zoom: Function
   },
   mounted() {
-    const { containerStyle, src, alt, imgStyle, ...data } = this.$options.props
+    const {
+      containerStyle,
+      src,
+      alt,
+      imgStyle,
+      ...data
+    } = this.$options.props
     const props = {}
 
     for (const key in data) {
