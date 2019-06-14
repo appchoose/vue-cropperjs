@@ -16,10 +16,13 @@ var previewPropType = typeof window === 'undefined' ? [String, Array] : [String,
 
 exports.default = {
   render: function render(h) {
-    return h('div', { style: this.containerStyle }, [h('img', {
+    return h('div', {
+      style: this.containerStyle
+    }, [h('img', {
       ref: 'img',
       attrs: {
         src: this.src,
+        crossOrigin: "Anonymous",
         alt: this.alt || 'image',
         style: 'max-width: 100%'
       },
@@ -51,7 +54,7 @@ exports.default = {
     },
     checkCrossOrigin: {
       type: Boolean,
-      default: true
+      default: false
     },
     checkOrientation: {
       type: Boolean,
